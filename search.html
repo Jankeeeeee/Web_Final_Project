@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>搜索</title>
+        <!-- 引入 echarts.js 下面两种方式选一种引入-->
+    <!--    1、需要npm install echarts-->
+    <!--    <script src="node_modules/echarts/dist/echarts.common.min.js"></script>-->
+    <!--    2、直接通过cdn，不需要下载任何东西-->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
+        <style type="text/css">
+            body{
+                padding:0;
+                margin:0;
+            }
+            .bg{
+                /* background-image: url("background.JPG"); */
+                background-image: url("https://api.oneneko.com/v1/bing_today");
+                background-size: 100% 100%;
+            }
+            .form0{
+                width: 600px;
+                height: 38px;
+                background-color:lightgoldenrodyellow;
+                margin: 20px auto;
+                padding: 50px auto;
+                opacity: 0.8;
+            }
+            .form1{
+                width: 600px;
+                height: 38px;
+                background-color:tomato;
+                margin: 20px auto;
+                padding: 50px auto;
+                opacity: 0.8;
+            }
+            .form2{
+                width: 600px;
+                height: 38px;
+                background-color:aquamarine;
+                margin: 20px auto;
+                padding: 50px auto;
+                opacity: 0.8;
+            }
+            .h2{
+                font-family: 黑体;
+                font-size: larger;
+            }
+        </style>
+    </head>
+<body class="bg">
+    <center>
+        <h2 class="form0">
+            新闻搜索引擎
+        </h2>
+    </center>
+    <center>
+        <form action="process_get" method="get" class="form1">
+            <input type="text" name="title" style="width: 200px; height: 30px;">
+            <input type="submit" value="新闻搜索"style="width: 80px; height: 30px;"></input>
+        </form>
+        <form action="heat_analysis" method="get" class="form2">
+            <input type="text" name="title" style="width: 200px; height: 30px;">
+            <input type="submit" value="热度分析"style="width: 80px; height: 30px;"></input>
+        </form>
+    </center>
+
+
+    <center>
+    <div id="main" style="width: 600px;height:400px;background-color: blanchedalmond;opacity: 0.8;"></div>
+    <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        title: {
+            text: '本引擎新闻来源及条目数'
+        },
+        tooltip: {},
+        legend: {
+            data:['条目数']
+        },
+        xAxis: {
+            data: ["新浪新闻","中国新闻网","参考消息网"]
+        },
+        yAxis: {},
+        series: [{
+            name: '数量',
+            type: 'bar',
+            data: [558, 359, 54]
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    </script>
+    </center>
+
+
+ 
+
+</body>
+</html>
+
+
+
+
